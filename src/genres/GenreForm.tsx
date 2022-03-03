@@ -10,7 +10,6 @@ export default function GenreForm(props: genreFromProps) {
         <>
             <Formik initialValues={props.model}
                 onSubmit={props.onSubmit}
-
                 validationSchema={Yup.object({
                     name: Yup.string().required('This field is required').firstLetterUppercase()
                 })}
