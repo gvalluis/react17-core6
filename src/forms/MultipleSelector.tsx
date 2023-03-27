@@ -11,8 +11,8 @@ export default function MultipleSelector(props: MultipleSelectorProps) {
     }
 
     function deSelect(item: multipleSelectorModel) {
-        const selected = [...props.nonSelected, item];
-        const nonSelected = props.selected.filter(value => value !== item);
+        const nonSelected = [...props.nonSelected, item];
+        const selected = props.selected.filter(value => value !== item);
         props.onChange(selected, nonSelected);
     }
 
@@ -35,7 +35,7 @@ export default function MultipleSelector(props: MultipleSelectorProps) {
                 <ul>
                     {
                         props.nonSelected.map(item =>
-                            <li key={item.key} onChange={() => select(item)}>{item.value}</li>
+                            <li key={item.key} onClick={() => select(item)}>{item.value}</li>
                         )
                     }
                 </ul>
@@ -46,7 +46,7 @@ export default function MultipleSelector(props: MultipleSelectorProps) {
                 <ul>
                     {
                         props.selected.map(item =>
-                            <li key={item.key} onChange={() => deSelect(item)}>{item.value}</li>
+                            <li key={item.key} onClick={() => deSelect(item)}>{item.value}</li>
                         )
                     }
                 </ul>
@@ -60,7 +60,7 @@ interface MultipleSelectorProps {
     displayName: string;
     selected: Array<multipleSelectorModel>;
     nonSelected: Array<multipleSelectorModel>;
-    onChange(selected: multipleSelectorModel[], nonSelected: multipleSelectorModel[])
+    onChange(selected: multipleSelectorModel[], nonSelected: multipleSelectorModel[]): any;
 }
 
 export interface multipleSelectorModel {

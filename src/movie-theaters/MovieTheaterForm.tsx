@@ -1,7 +1,7 @@
 import { Form, Formik, FormikHelpers } from "formik";
 import TextField from '../forms/TextField';
 import * as Yup from 'yup';
-import movieTheaterCreationDTO from "./movieTheater.model";
+import { movieTheaterCreationDTO } from "./movieTheater.model";
 import Button from '../utils/Button';
 import { Link } from "react-router-dom";
 import MapField from "../forms/MapField";

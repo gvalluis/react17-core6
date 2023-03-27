@@ -1,29 +1,33 @@
 import axios from 'axios';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import DisplayErrors from '../utils/DisplayErrors';
 import { urlGenres } from '../utils/utils';
 import GenreForm from './GenreForm';
 import genreCreationDTO from './genres.model';
 
 export default function CreateGenre() {
-
-    async function create(genre: genreCreationDTO) {
-        const history = useHistory();
+    const history = useHistory();
+    const [errors, setErrors] = useState<string[]>([]);
+    async function Create(genre: genreCreationDTO) {
         try {
             await axios.post(urlGenres, genre);
             history.push('/genres')
-        } catch (error) {
-            console.log(error);
+        } catch (error: any) {
+            if (error && error.response) {
+                setErrors(error.response.data)
+            }
         }
     }
 
     return (
         <>
             <h3>Create Genre</h3>
+            <DisplayErrors errors={errors}/>
             <GenreForm model={{ name: '' }}
-                onSubmit={
-                    async value => {
-                        await create(value)
-                    }
+                onSubmit={async value => {
+                    await Create(value)
+                }
                 }
             />
         </>

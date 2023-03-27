@@ -1,3 +1,4 @@
+import { actorMovieDTO } from './../actors/actors.model.d';
 //type definition file
 
 export interface movieDTO {
@@ -13,6 +14,9 @@ export interface movieCreationDTO {
     releaseDate?: Date;
     poster?: File;
     posterURL?: string;
+    genresIds?: number[];
+    movieTheatersIds?: number[];
+    actors?: actorMovieDTO[];
 }
 
 export interface landingPageDTO {
