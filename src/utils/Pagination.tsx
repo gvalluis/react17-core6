@@ -83,3 +83,7 @@ interface PaginationProps {
     radio: number;
     onChange(page: number): void;
 }
+
+Pagination.defaultProps = {
+    radio: 3,
+}
